@@ -3,16 +3,33 @@
   display: block;
 }
 
+#nav{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3%;
+}
 
-#time{
-    position: absolute;
-    top: 8px;
-    right: 16px;
+#highscores{
+  margin-left: 8%;
+}
+
+#time {
+  margin-right: 8%;
+}
+
+#title{
+  text-align: left;
+}
+
+.answer{
+  display: block;
+  width: fit-content;
+  padding: 0px 10px;
 }
 
 .center {
   margin: auto;
-  margin-top: 6%;
+  margin-top: 4%;
   width: 50%;
   border: 1px solid black;
   padding: 10px;
