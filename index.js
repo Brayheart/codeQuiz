@@ -41,34 +41,29 @@ var startBtn = document.querySelector('#start')
 var container = document.querySelector(".center")
 var users = JSON.parse(localStorage.getItem('users')) || []
 
-
-function timer(){
-  setInterval(() => {    
-    if(time === 0){
-      container.textContent = ''
-      var text = document.createElement('h2')
-      text.textContent = 'GAME OVER'
-
-      var restart = document.createElement('button')
-      restart.textContent = 'restart'
-      restart.setAttribute('class', 'restart')
-
-
-      container.appendChild(text)
-      container.appendChild(restart)
-      document.querySelector('#time').textContent = `TIMES UP`
-      clearInterval(timer())
-    } else {
-
-      document.querySelector('#time').textContent = `Time: ${time}`
-      console.log(time)
-      time--
-    }
+function countdown(){
+  let timer = setInterval(() => {
+      if(time === 0){
+        container.textContent = ''
+        var text = document.createElement('h2')
+        text.textContent = 'GAME OVER'
+  
+        var restart = document.createElement('button')
+        restart.textContent = 'restart'
+        restart.setAttribute('class', 'restart')
+        restart.addEventListener('click', reload)
+  
+        container.appendChild(text)
+        container.appendChild(restart)
+        document.querySelector('#time').textContent = `TIMES UP ${time}`
+        clearInterval(timer)
+      } else {
+        document.querySelector('#time').textContent = `Time: ${time}`
+        console.log(time)
+        time--
+      }
   }, 1000);
 }
-
-
-console.log(typeof users, users)
 
 function startQuiz(){
   //clear container
@@ -220,4 +215,4 @@ function reload(){
 
 
 startBtn.addEventListener("click", startQuiz);
-startBtn.addEventListener("click", timer);
+startBtn.addEventListener("click", countdown);

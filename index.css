@@ -74,6 +74,13 @@ tr:nth-child(even) {
   border-color: violet;
 }
 
+.restart {
+  padding: 4px 10px;
+  background-color: #351B75;
+  color: white;
+  border-radius: 5px;
+}
+
 :hover.restart{
   background-color: violet;
   border-color: violet;
