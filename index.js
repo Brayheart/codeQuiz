@@ -36,14 +36,15 @@ var questions = [
 
 var currentQuestion = 0
 var userScore = 0
-var time = 5
+var time = 60
+let timer;
 var startBtn = document.querySelector('#start')
 var container = document.querySelector(".center")
 var users = JSON.parse(localStorage.getItem('users')) || []
 
 function countdown(){
-  let timer = setInterval(() => {
-      if(time === 0){
+  timer = setInterval(() => {
+      if(time <= 0){
         container.textContent = ''
         var text = document.createElement('h2')
         text.textContent = 'GAME OVER'
@@ -116,6 +117,7 @@ function checkAnswer(event){
 }
 
 function highscore(){
+  clearInterval(timer)
   container.innerHTML = ''
   var title = document.createElement("h3")
   title.textContent = 'All Done!'
