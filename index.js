@@ -150,7 +150,7 @@ function setHighScore(event){
   if(userInitals === ''){
     alert('Please enter a value')
   } else {
-    users.push([userInitals, userScore, time])
+    users.push([userInitals, userScore, time + 1])
     localStorage.setItem('users', JSON.stringify(users))
     viewHighScore()
   }
@@ -158,7 +158,7 @@ function setHighScore(event){
 
 function viewHighScore(){
   container.innerHTML = ''
-
+console.log("here")
   var title = document.createElement('h2')
   title.textContent = 'High Scores'
   container.appendChild(title)
@@ -177,10 +177,11 @@ function viewHighScore(){
   tablerow.appendChild(timetableheader)
   table.appendChild(tablerow)
   container.appendChild(table)
-
+console.log(users)
   users.forEach(el => {
     var user = el[0]
     var score = el[1]
+    var usertime = el[2]
     var tablerow = document.createElement('tr')
     var tabledatauser = document.createElement('td')
     var tabledatascore = document.createElement('td')
@@ -188,7 +189,7 @@ function viewHighScore(){
 
     tabledatauser.textContent = user
     tabledatascore.textContent = score
-    tabledatatime.textContent = time
+    tabledatatime.textContent = usertime
     
     tablerow.appendChild(tabledatauser)
     tablerow.appendChild(tabledatascore)
