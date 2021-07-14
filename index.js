@@ -109,11 +109,11 @@ function checkAnswer(event){
     userAnswer.setAttribute('class','wrong')
     container.appendChild(userAnswer)
   }
-  // setTimeout(() => {
-  //   startQuiz()
-  // }, 1000);
+  setTimeout(() => {
+    startQuiz()
+  }, 1000);
   currentQuestion++
-  startQuiz()
+  // startQuiz()
 }
 
 function highscore(){
@@ -148,9 +148,13 @@ function highscore(){
 
 function setHighScore(event){
   userInitals = document.querySelector('#textarea').value
-  users.push([userInitals, userScore])
-  localStorage.setItem('users', JSON.stringify(users))
-  viewHighScore()
+  if(userInitals === ''){
+    alert('Please enter a value')
+  } else {
+    users.push([userInitals, userScore])
+    localStorage.setItem('users', JSON.stringify(users))
+    viewHighScore()
+  }
 }
 
 function viewHighScore(){
@@ -215,6 +219,6 @@ function reload(){
   location.reload();
 }
 
-
+document.querySelector('#highscores').addEventListener('click',viewHighScore)
 startBtn.addEventListener("click", startQuiz);
 startBtn.addEventListener("click", countdown);
