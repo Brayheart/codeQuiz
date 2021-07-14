@@ -145,3 +145,14 @@ button{
   text-align: center;
 }
 
+.correct{
+  border-top: solid green;
+  width: inherit;
+  font-style: italic;
+}
+
+.wrong{
+  border-top: solid red;
+  width: inherit;
+  font-style: italic;
+}

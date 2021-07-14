@@ -56,7 +56,7 @@ function countdown(){
   
         container.appendChild(text)
         container.appendChild(restart)
-        document.querySelector('#time').textContent = `TIMES UP ${time}`
+        document.querySelector('#time').textContent = `TIMES UP`
         clearInterval(timer)
       } else {
         document.querySelector('#time').textContent = `Time: ${time}`
@@ -100,7 +100,7 @@ function checkAnswer(event){
 
   if(event.target.textContent === questions[currentQuestion].answer){
     userAnswer.textContent = 'Correct!'
-    userAnswer.setAttribute('class','.correct')
+    userAnswer.setAttribute('class','correct')
     container.appendChild(userAnswer)
     userScore++
   } else {
@@ -113,7 +113,6 @@ function checkAnswer(event){
     startQuiz()
   }, 1000);
   currentQuestion++
-  // startQuiz()
 }
 
 function highscore(){
@@ -151,7 +150,7 @@ function setHighScore(event){
   if(userInitals === ''){
     alert('Please enter a value')
   } else {
-    users.push([userInitals, userScore])
+    users.push([userInitals, userScore, time])
     localStorage.setItem('users', JSON.stringify(users))
     viewHighScore()
   }
@@ -167,12 +166,15 @@ function viewHighScore(){
   var table  = document.createElement("table")
   var tablerow = document.createElement('tr')
   var usertableheader = document.createElement('th')
-  usertableheader.textContent = 'user'
+  usertableheader.textContent = 'User'
   var scoretableheader = document.createElement('th')
-  scoretableheader.textContent = 'score'
+  scoretableheader.textContent = 'Score'
+  var timetableheader = document.createElement('th')
+  timetableheader.textContent = 'Time'
 
   tablerow.appendChild(usertableheader)
   tablerow.appendChild(scoretableheader)
+  tablerow.appendChild(timetableheader)
   table.appendChild(tablerow)
   container.appendChild(table)
 
@@ -182,12 +184,15 @@ function viewHighScore(){
     var tablerow = document.createElement('tr')
     var tabledatauser = document.createElement('td')
     var tabledatascore = document.createElement('td')
+    var tabledatatime = document.createElement('td')
 
     tabledatauser.textContent = user
     tabledatascore.textContent = score
+    tabledatatime.textContent = time
     
     tablerow.appendChild(tabledatauser)
     tablerow.appendChild(tabledatascore)
+    tablerow.appendChild(tabledatatime)
     table.appendChild(tablerow)
   })
 
